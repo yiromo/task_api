@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  greenapi-backend:
+    build: .
+    container_name: greenapi-back
+    restart: always
+    ports:
+      - 80:8000
+    environment:
+      - greenapi-back
+    networks:
+      - greenapi
+    volumes:
+      - .:/src
+
+
+
+networks:
+  greenapi:
+    driver: bridge
