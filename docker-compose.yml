@@ -6,7 +6,7 @@ services:
     container_name: greenapi-back
     restart: always
     ports:
-      - 80:8000
+      - 8100:8000
     environment:
       - greenapi-back
     networks:
@@ -14,7 +14,15 @@ services:
     volumes:
       - .:/src
 
-
+  nginx:
+    image: nginx:latest
+    container_name: greenapi-nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 80:80
+    networks:
+      - greenapi
 
 networks:
   greenapi:
